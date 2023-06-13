@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - hand
   - item
+  - CanSee
   layers:
   - Default
   - TransparentFX
