@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Item : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] GameObject item;
-    //種類がある　列挙型出かんり
+    //???????????@?????^?o??????
     public enum Type
     {
         Key,
@@ -16,9 +16,9 @@ public class Item : MonoBehaviour, IPointerClickHandler
     
    
 
-    // アイテムを取得できる距離
+    // ?A?C?e??????????????????
     float interactionDistance = 2f;
-    //プレイヤーとアイテムとの距離
+    //?v???C???[???A?C?e??????????
     float PlayerItemDistance;
 
     private Outline outline;
@@ -33,7 +33,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
     void Update()
     {
-        //Playerとの距離によってアウトラインの表示
+        //Player?????????????????A?E?g???C?????\??
         PlayerItemDistance = Vector3.Distance(Player.transform.position, transform.position);
         if (interactionDistance > PlayerItemDistance)
         {
@@ -45,14 +45,14 @@ public class Item : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    //タイミング　クリックしたとき
+    //?^?C?~???O?@?N???b?N????????
     public void OnPointerClick(PointerEventData eventData)
     {
         if (interactionDistance > PlayerItemDistance)
         {
 
            
-            //TODO:アイテムぼっくすに格納され
+            //:?A?C?e?????????????i?[????
             ItemBox.instance.SetItem(type);
 
 
@@ -61,7 +61,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
             Destroy(gameObject);
 
-            //鍵を取得
+            //????????
            
         }
     }
