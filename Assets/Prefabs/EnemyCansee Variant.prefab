@@ -69,6 +69,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6709726254273269718, guid: 546ce5843589cdd44bb5a1593212ee6e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6709726254275445604, guid: 546ce5843589cdd44bb5a1593212ee6e, type: 3}
       propertyPath: m_Name
       value: EnemyCansee Variant
