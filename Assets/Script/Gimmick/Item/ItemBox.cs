@@ -5,8 +5,9 @@ using UnityEngine;
 public class ItemBox : MonoBehaviour
 {
     public GameObject box0;
+    public GameObject box1;
 
-   
+
 
     public static ItemBox instance;
 
@@ -29,22 +30,34 @@ public class ItemBox : MonoBehaviour
         {
             audioSource.Play();
             box0.SetActive(true);
-            Debug.Log(type + "取得");
+            Debug.Log(type + "????");
+        }
+        if (type == Item.Type.Ohuda)
+        {
+            audioSource.Play();
+            box1.SetActive(true);
+            Debug.Log(type + "????");
         }
     }
 
 
     public bool CanUseItem(Item.Type type)
     {
-        //アイテムを使える角y化は表示されているか同課が分かればいい
-        //表示されているかどうかは、activeselfを使えばいい
+        //?A?C?e?????g?????py?????\????????????????????????????????
+        //?\???????????????????????Aactiveself???g????????
         if (type == Item.Type.Key)
         {
             
             return box0.activeSelf;
             
         }
-       
+        if (type == Item.Type.Ohuda)
+        {
+
+            return box1.activeSelf;
+
+        }
+
         return false;
     }
 
@@ -52,9 +65,15 @@ public class ItemBox : MonoBehaviour
     {
         if (type == Item.Type.Key)
         {
-            Debug.Log(type + "を使った");
+            Debug.Log(type + "???g????");
             box0.SetActive(false);
         }
-        
+
+        if (type == Item.Type.Ohuda)
+        {
+            Debug.Log(type + "???g????");
+            box1.SetActive(false);
+        }
+
     }
 }

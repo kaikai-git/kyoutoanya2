@@ -10,6 +10,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
     public enum Type
     {
         Key,
+        Ohuda,
     }
     public Type type;
     [SerializeField] GameObject Player;

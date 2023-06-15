@@ -10,4 +10,9 @@ public class Start : MonoBehaviour
 	{
 		SceneManager.LoadScene("Animation");
 	}
+	public void ReStartGame()
+	{
+		SceneManager.LoadScene("SampleScene");
+	}
+
 }
