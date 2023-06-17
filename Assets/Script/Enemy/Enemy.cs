@@ -38,6 +38,11 @@ public class Enemy : MonoBehaviour
                 Vector3 newPosition = currentPosition + new Vector3(10f, 0f, 0f);
                 SpecialPerform.anchoredPosition3D = newPosition;
                 Debug.Log("d");
+                if (SpecialPerform.anchoredPosition3D.x >= -2)
+                {
+                    Debug.Log("3");
+                    peformanceCompleate();
+                }
             }
            
             //if(newPosition = )
@@ -49,7 +54,7 @@ public class Enemy : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Debug.Log("ge-muo-ba-");
-            //SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOver");
         }
 
         //SpecialPerformance
@@ -57,13 +62,20 @@ public class Enemy : MonoBehaviour
         {
             
                 peformtime = true;
-            
+            Time.timeScale = 0;
         }
         
     }
 
-   
-   
-    
+    private void peformanceCompleate()
+    {
+        SceneManager.LoadScene("GameOver");
+        // フェードアウトが完了したら行いたい処理を記述する
+        // 例えば、シーン切り替えなどの操作を行う
+    }
+
+
+
+
 
 }

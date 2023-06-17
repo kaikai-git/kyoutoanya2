@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Item : MonoBehaviour, IPointerClickHandler
 {
+    public GameObject Ghost;
     [SerializeField] GameObject item;
     //???????????@?????^?o??????
     public enum Type
@@ -57,7 +58,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
             ItemBox.instance.SetItem(type);
 
 
-
+            Ghost.SetActive(true);
             //gameObject.SetActive(false);
 
             Destroy(gameObject);
