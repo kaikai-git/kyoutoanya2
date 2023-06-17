@@ -70,6 +70,7 @@ public class Enemy : MonoBehaviour
     private void peformanceCompleate()
     {
         SceneManager.LoadScene("GameOver");
+        Time.timeScale = 1;
         // フェードアウトが完了したら行いたい処理を記述する
         // 例えば、シーン切り替えなどの操作を行う
     }
