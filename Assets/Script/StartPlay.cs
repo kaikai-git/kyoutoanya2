@@ -7,6 +7,7 @@ public class StartPlay : MonoBehaviour
 {
     public Image fadeout;
     private bool isFading = false;
+    
     Color color;
     public float fadeSpeed = 0.1f;
 
@@ -37,14 +38,19 @@ public class StartPlay : MonoBehaviour
         isFading = true;
         //SceneManager.LoadScene("Animation");
     }
-    public void ReStartGame()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
+    
 
     private void FadeOutComplete()
     {
-        SceneManager.LoadScene("Animation");
+        if(Enemy.IsDeath)
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("Animation");
+        }
+        
         // フェードアウトが完了したら行いたい処理を記述する
         // 例えば、シーン切り替えなどの操作を行う
     }

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public static bool IsDeath = false;
 
     public GameObject TargetObject;
     public RectTransform SpecialPerform;
@@ -55,13 +56,14 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("ge-muo-ba-");
             SceneManager.LoadScene("GameOver");
+            IsDeath = true;
         }
 
         //SpecialPerformance
         else if (other.CompareTag("PlayerSub"))
         {
-            
-                peformtime = true;
+            IsDeath = true;
+            peformtime = true;
             Time.timeScale = 0;
         }
         
