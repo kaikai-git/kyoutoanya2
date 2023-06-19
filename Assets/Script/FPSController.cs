@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FPSController : MonoBehaviour
 {
-
+    [SerializeField] GameObject PausePanel;
     float x, z;
     float speed = 0.1f;
-
+    bool IsPause;
     public GameObject cam;
     Quaternion cameraRot, characterRot;
     float Xsensityvity = 3f,Ysensityvity = 3f;
@@ -40,6 +40,8 @@ public class FPSController : MonoBehaviour
 
 
         UpdateCursorLock();
+
+        pause();
     }
 
     private void FixedUpdate()
@@ -102,5 +104,28 @@ public class FPSController : MonoBehaviour
         return q;
     }
 
+
+    public void pause()
+    {
+
+        //Pause screen display
+        if (Input.GetKeyDown(KeyCode.Escape)&& IsPause == false)
+        {
+
+            IsPause = true;
+            Debug.Log("esc");
+            Time.timeScale = 0;
+            PausePanel.SetActive(true);
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && IsPause == true)
+        {
+            IsPause = false;
+            Debug.Log("esc");
+            Time.timeScale = 1;
+            PausePanel.SetActive(false);
+        }
+
+
+    }
 
 }
