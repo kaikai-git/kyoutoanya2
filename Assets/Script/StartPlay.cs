@@ -11,6 +11,7 @@ public class StartPlay : MonoBehaviour
     Color color;
     public float fadeSpeed = 0.1f;
 
+    public static bool IsDeath = false;
     private void Start()
     {
         // フェードアウトイメージの初期設定
@@ -42,7 +43,7 @@ public class StartPlay : MonoBehaviour
 
     private void FadeOutComplete()
     {
-        if(Enemy.IsDeath)
+        if(IsDeath)
         {
             SceneManager.LoadScene("SampleScene");
         }

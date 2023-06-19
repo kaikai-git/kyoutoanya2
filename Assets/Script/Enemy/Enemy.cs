@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public static bool IsDeath = false;
 
+    float ChaceDistance = 3f;
     public GameObject TargetObject;
-   
+    public GameObject[] LoiteringObject;
+
     UnityEngine.AI.NavMeshAgent navMeshAgent;
     
     // Start is called before the first frame update
@@ -22,21 +23,39 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Distance between player and enemy
+        float distanceToPlayer = Vector3.Distance(transform.position, TargetObject.transform.position);
 
-        // NavMesh
-        if (navMeshAgent.pathStatus != UnityEngine.AI.NavMeshPathStatus.PathInvalid)
+        if (ChaceDistance > distanceToPlayer)
         {
-            // NavMeshAgent�ɖړI�n���Z�b�g
-            navMeshAgent.SetDestination(TargetObject.transform.position);
+            Debug.Log(distanceToPlayer);
+           
+            // NavMesh
+            if (navMeshAgent.pathStatus != UnityEngine.AI.NavMeshPathStatus.PathInvalid)
+            {
+                // NavMeshAgent�ɖړI�n���Z�b�g
+                navMeshAgent.SetDestination(TargetObject.transform.position);
+            }
         }
+        //enemy loitering
+        else
+        {
+            // NavMesh
+            if (navMeshAgent.pathStatus != UnityEngine.AI.NavMeshPathStatus.PathInvalid)
+            {
+                // NavMeshAgent�ɖړI�n���Z�b�g
+                //for (int i = 0; i < LoiteringObject.Length; i++)
+                //{
+                //    navMeshAgent.SetDestination(LoiteringObject.transform.position);
+                //}
 
-        
-        
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        IsDeath = true;
+        StartPlay.IsDeath = true;
         if (other.CompareTag("Player"))
         {
             Debug.Log("ge-muo-ba-");

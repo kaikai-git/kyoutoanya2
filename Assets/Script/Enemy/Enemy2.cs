@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Enemy2 : MonoBehaviour
 {
-    public static bool IsDeath = false;
 
     public GameObject TargetObject;
     public RectTransform SpecialPerform;
@@ -21,7 +20,7 @@ public class Enemy2 : MonoBehaviour
     {
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         color = gameObject.GetComponent<SpriteRenderer>().color;
-        color.a = 0.0f;
+        color.a = 0.2f;
         gameObject.GetComponent<SpriteRenderer>().color = color;
     }
 
@@ -62,13 +61,13 @@ public class Enemy2 : MonoBehaviour
         {
             Debug.Log("ge-muo-ba-");
             SceneManager.LoadScene("GameOver");
-            IsDeath = true;
+            StartPlay.IsDeath = true;
         }
 
         //SpecialPerformance
         else if (other.CompareTag("PlayerSub"))
         {
-            IsDeath = true;
+            StartPlay.IsDeath = true;
             peformtime = true;
             Time.timeScale = 0;
         }
