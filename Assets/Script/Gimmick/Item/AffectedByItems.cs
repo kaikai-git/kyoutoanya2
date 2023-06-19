@@ -47,8 +47,8 @@ public class AffectedByItems : MonoBehaviour, IPointerClickHandler
     {
         
         
-        bool hasItem = ItemBox.instance.CanUseItem(Item.Type.Key);//アイテムボックスに鍵があるかどうか => ItemとItemBoxを作る必要がある
-        if (hasItem == true)//playerが葉っぱを持っていたら
+        bool HasItemKey = ItemBox.instance.CanUseItem(Item.Type.Key);//アイテムボックスに鍵があるかどうか => ItemとItemBoxを作る必要がある
+        if (HasItemKey == true)//playerが葉っぱを持っていたら
         {
             if (textScript != null)
             {
