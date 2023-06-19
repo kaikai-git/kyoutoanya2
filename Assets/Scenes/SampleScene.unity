@@ -435,15 +435,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8890276653673400898, guid: 63d7cd6b6691d454d981e3819cbd21c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.3
+      value: 38.58
       objectReference: {fileID: 0}
     - target: {fileID: 8890276653673400898, guid: 63d7cd6b6691d454d981e3819cbd21c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.4
+      value: 20.4
       objectReference: {fileID: 0}
     - target: {fileID: 8890276653673400898, guid: 63d7cd6b6691d454d981e3819cbd21c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -205.19
+      value: -246.06
       objectReference: {fileID: 0}
     - target: {fileID: 8890276653673400898, guid: 63d7cd6b6691d454d981e3819cbd21c0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20495,7 +20495,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 765736693}
-  SpecialPerform: {fileID: 0}
 --- !u!195 &1543473737
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -20730,6 +20729,10 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5336662041750459806, guid: f64a5ca4380edad47a401d3814c26776, type: 3}
+      propertyPath: Ghost
+      value: 
+      objectReference: {fileID: 1983800256}
     - target: {fileID: 5336662041750459806, guid: f64a5ca4380edad47a401d3814c26776, type: 3}
       propertyPath: Player
       value: 
@@ -23717,7 +23720,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1983800263}
   - component: {fileID: 1983800258}
-  - component: {fileID: 1983800260}
   - component: {fileID: 1983800259}
   - component: {fileID: 1983800262}
   - component: {fileID: 1983800261}
@@ -23804,20 +23806,6 @@ NavMeshAgent:
   m_BaseOffset: 17.539999
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1983800260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1983800256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21dc8761d00bef448a29adb38b06fcc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetObject: {fileID: 765736693}
-  SpecialPerform: {fileID: 9092858}
 --- !u!114 &1983800261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23830,6 +23818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feac2fda778d5a149b08614781933a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetObject: {fileID: 765736693}
+  SpecialPerform: {fileID: 9092858}
 --- !u!222 &1983800262
 CanvasRenderer:
   m_ObjectHideFlags: 0
