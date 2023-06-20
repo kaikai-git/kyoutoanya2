@@ -10,8 +10,8 @@ public class FPSController : MonoBehaviour
     bool IsPause;
     public GameObject cam;
     Quaternion cameraRot, characterRot;
-    float Xsensityvity = 3f,Ysensityvity = 3f;
-
+    float Xsensityvity = 2.5f,Ysensityvity = 0.3f;
+    float RotateSpeed = 170f;
     bool cursorLock = true;
 
     float minX = -90f, maxX = 90f;
@@ -38,20 +38,27 @@ public class FPSController : MonoBehaviour
         cam.transform.localRotation = cameraRot;
         transform.localRotation = characterRot;
 
-
+        RotatePlayer();
         UpdateCursorLock();
 
         pause();
     }
+    void RotatePlayer()
+    {
+        float rotationAmount = Input.GetAxisRaw("Horizontal") * RotateSpeed * Time.deltaTime;
+
+        Quaternion deltaRotation = Quaternion.Euler(Vector3.up * rotationAmount);
+        characterRot *= deltaRotation;
+    }
 
     private void FixedUpdate()
     {
-        x = Input.GetAxisRaw("Horizontal") * speed;
-        z = Input.GetAxisRaw("Vertical") * speed;
+        //x = Input.GetAxisRaw("Horizontal") * speed;
+        z = Input.GetAxisRaw("Vertical") * speed  *Time.deltaTime;
 
-        if (x != 0 || z != 0)
+        if (/*x != 0 ||*/ z != 0)
         {
-            Vector3 moveDirection = transform.forward * z + transform.right * x;
+            Vector3 moveDirection = transform.forward * z /*+ transform.right * x*/;
             moveDirection.y = 0f;
             moveDirection = moveDirection.normalized;
 
@@ -109,7 +116,7 @@ public class FPSController : MonoBehaviour
     {
 
         //Pause screen display
-        if (Input.GetKeyDown(KeyCode.Escape)&& IsPause == false)
+        if (Input.GetKeyDown(KeyCode.E) && IsPause == false)
         {
 
             IsPause = true;
@@ -117,7 +124,7 @@ public class FPSController : MonoBehaviour
             Time.timeScale = 0;
             PausePanel.SetActive(true);
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && IsPause == true)
+        else if(Input.GetKeyDown(KeyCode.E) && IsPause == true)
         {
             IsPause = false;
             Debug.Log("esc");
