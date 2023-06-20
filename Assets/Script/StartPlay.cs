@@ -56,6 +56,8 @@ public class StartPlay : MonoBehaviour
         // 例えば、シーン切り替えなどの操作を行う
     }
 
+
+    
     //public Image fadeoutImage;
     //public float fadeSpeed = 0.1f;
 
