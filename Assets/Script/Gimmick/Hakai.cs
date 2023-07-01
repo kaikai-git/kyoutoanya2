@@ -8,13 +8,16 @@ public class Hakai : MonoBehaviour
     public GameObject[] HakaiDore;
     public GameObject Obake;
 
-    // ドアの個別の回転角度
+    public GameObject[] DoreClose;
+    public GameObject[] OhudaDore;
+
+    // ?h?A???????????]?p?x
     Quaternion[] rotations = new Quaternion[]
     {
-        Quaternion.Euler(0, 30, 90), // 0番目のドアの回転角度
-        Quaternion.Euler(0, 10, 80), // 1番目のドアの回転角度
-        Quaternion.Euler(0, 10, 60), // 2番目のドアの回転角度
-        // 必要な回転角度を配列に追加していく
+        Quaternion.Euler(0, 30, 90), // 0???????h?A?????]?p?x
+        Quaternion.Euler(0, 10, 80), // 1???????h?A?????]?p?x
+        Quaternion.Euler(0, 10, 60), // 2???????h?A?????]?p?x
+        // ?K?v?????]?p?x???z????????????????
     };
 
 
@@ -23,32 +26,42 @@ public class Hakai : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    //コライダー内に入るとイベント発生
+    //?R???C?_?[???????????C?x???g????
     private void OnTriggerEnter(Collider other)
     {
-        
-        //ドアが破壊される音
+        foreach (GameObject dore in DoreClose)
+        {
+            dore.SetActive(false);
+        }
+
+        foreach (GameObject dore in OhudaDore)
+        {
+            dore.SetActive(true);
+        }
+
+
+        //?h?A???j??????????
         audioSource.Play();
         for (int i = 0; i < HakaiDore.Length; i++)
         {
             if (i < rotations.Length)
             {
-                // ドアの位置と角度を設定
+                // ?h?A?????u???p?x??????
                 HakaiDore[i].transform.rotation = rotations[i];
             }
         }
 
-        //テキストを表示
+        //?e?L?X?g???\??
         Text textScript = FindObjectOfType<Text>();
         if (textScript != null)
         {
-            textScript.changetext("下から何かが壊れる音がした");
+            textScript.changetext("??????????????????????????");
         }
 
-        //Collision破壊
+        //Collision?j??
         Destroy(gameObject, 3f);
 
-        //お化けを破壊
+        //?????????j??
         Destroy(Obake);
 
     }

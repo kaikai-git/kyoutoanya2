@@ -8,6 +8,7 @@ public class OhudaDore : MonoBehaviour
     [SerializeField]
     [Tooltip("?????h?A???A?j???[?^?[")]
     private Animator[] opendoreAnims;
+    public GameObject ClearArea;
 
     AudioSource audioSource;
 
@@ -39,6 +40,8 @@ public class OhudaDore : MonoBehaviour
             {
 
                 opendoreAnim.SetTrigger("open");
+                ClearArea.SetActive(true);
+
                 //Destroy(gameObject, 3f);
             }
 
