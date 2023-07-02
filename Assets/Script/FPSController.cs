@@ -5,16 +5,18 @@ using UnityEngine;
 public class FPSController : MonoBehaviour
 {
     [SerializeField] GameObject PausePanel;
+    [SerializeField] AudioSource footstepSound;
     float x, z;
     float speed = 0.1f;
     bool IsPause;
     public GameObject cam;
     Quaternion cameraRot, characterRot;
-    float Xsensityvity = 2.5f,Ysensityvity = 0.3f;
+    float Xsensityvity = 2.5f, Ysensityvity = 0.3f;
     float RotateSpeed = 170f;
     bool cursorLock = true;
 
     float minX = -90f, maxX = 90f;
+    bool isWalking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,6 @@ public class FPSController : MonoBehaviour
         cameraRot *= Quaternion.Euler(-yRot, 0, 0);
         characterRot *= Quaternion.Euler(0, xRot, 0);
 
-        //Update????????????????????????
         cameraRot = ClampRotation(cameraRot);
 
         cam.transform.localRotation = cameraRot;
@@ -41,8 +42,18 @@ public class FPSController : MonoBehaviour
         RotatePlayer();
         UpdateCursorLock();
 
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
+
         pause();
     }
+
     void RotatePlayer()
     {
         float rotationAmount = Input.GetAxisRaw("Horizontal") * RotateSpeed * Time.deltaTime;
@@ -53,20 +64,26 @@ public class FPSController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //x = Input.GetAxisRaw("Horizontal") * speed;
-        z = Input.GetAxisRaw("Vertical") * speed  *Time.deltaTime;
+        z = Input.GetAxisRaw("Vertical") * speed * Time.deltaTime;
 
-        if (/*x != 0 ||*/ z != 0)
+        if (z != 0)
         {
-            Vector3 moveDirection = transform.forward * z /*+ transform.right * x*/;
+            Vector3 moveDirection = transform.forward * z;
             moveDirection.y = 0f;
             moveDirection = moveDirection.normalized;
 
             transform.position += moveDirection * speed;
+
+            if (isWalking && !footstepSound.isPlaying)
+            {
+                footstepSound.Play();
+            }
+        }
+        else
+        {
+            footstepSound.Stop();
         }
     }
-
-
 
     public void UpdateCursorLock()
     {
@@ -91,12 +108,8 @@ public class FPSController : MonoBehaviour
         }
     }
 
-
-    //?p?x??????????????
     public Quaternion ClampRotation(Quaternion q)
     {
-        //q = x,y,z,w (x,y,z???x?N?g???i?????????j?Fw???X?J???[?i???W?????????W?????j)
-
         q.x /= q.w;
         q.y /= q.w;
         q.z /= q.w;
@@ -111,28 +124,19 @@ public class FPSController : MonoBehaviour
         return q;
     }
 
-
     public void pause()
     {
-
-        //Pause screen display
         if (Input.GetKeyDown(KeyCode.E) && IsPause == false)
         {
-
             IsPause = true;
-            Debug.Log("esc");
             Time.timeScale = 0;
             PausePanel.SetActive(true);
         }
-        else if(Input.GetKeyDown(KeyCode.E) && IsPause == true)
+        else if (Input.GetKeyDown(KeyCode.E) && IsPause == true)
         {
             IsPause = false;
-            Debug.Log("esc");
             Time.timeScale = 1;
             PausePanel.SetActive(false);
         }
-
-
     }
-
 }
