@@ -6,7 +6,7 @@ public class ItemBox : MonoBehaviour
 {
     public GameObject box0;
     public GameObject box1;
-
+    public GameObject box2;
 
 
     public static ItemBox instance;
@@ -38,6 +38,12 @@ public class ItemBox : MonoBehaviour
             box1.SetActive(true);
             Debug.Log(type + "????");
         }
+        if (type == Item.Type.Boueikun)
+        {
+            audioSource.Play();
+            box2.SetActive(true);
+            Debug.Log(type + "????");
+        }
     }
 
 
@@ -57,7 +63,12 @@ public class ItemBox : MonoBehaviour
             return box1.activeSelf;
 
         }
+        if (type == Item.Type.Boueikun)
+        {
 
+            return box2.activeSelf;
+
+        }
         return false;
     }
 

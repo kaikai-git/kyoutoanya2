@@ -55,7 +55,7 @@ public class Hakai : MonoBehaviour
         Text textScript = FindObjectOfType<Text>();
         if (textScript != null)
         {
-            textScript.changetext("??????????????????????????");
+            textScript.changetext("‰º‚©‚ç‚È‚É‚©•¨‰¹‚ª‚µ‚½");
         }
 
         //Collision?j??

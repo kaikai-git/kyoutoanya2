@@ -12,6 +12,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
     {
         Key,
         Ohuda,
+        Boueikun,
     }
     public Type type;
     [SerializeField] GameObject Player;
