@@ -7,7 +7,7 @@ public class ItemBox : MonoBehaviour
     public GameObject box0;
     public GameObject box1;
     public GameObject box2;
-
+    public GameObject box3;
 
     public static ItemBox instance;
 
@@ -44,6 +44,12 @@ public class ItemBox : MonoBehaviour
             box2.SetActive(true);
             Debug.Log(type + "????");
         }
+        if (type == Item.Type.Sho)
+        {
+            audioSource.Play();
+            box3.SetActive(true);
+            Debug.Log(type + "????");
+        }
     }
 
 
@@ -67,6 +73,12 @@ public class ItemBox : MonoBehaviour
         {
 
             return box2.activeSelf;
+
+        }
+        if (type == Item.Type.Sho)
+        {
+
+            return box3.activeSelf;
 
         }
         return false;
