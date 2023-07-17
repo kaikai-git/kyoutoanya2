@@ -13,11 +13,12 @@ public class Enemy2 : MonoBehaviour
     private Color color;
     private float fadeSpeed = 0.02f; // アルファ値の変化量
     private bool peformtime = false;
-
+    private AudioSource EnemyVoice;
     UnityEngine.AI.NavMeshAgent navMeshAgent;
 
     void Start()
     {
+        EnemyVoice = GetComponent<AudioSource>();
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         color = gameObject.GetComponent<SpriteRenderer>().color;
         color.a = 0.2f;
@@ -32,7 +33,12 @@ public class Enemy2 : MonoBehaviour
         if (navMeshAgent.pathStatus != UnityEngine.AI.NavMeshPathStatus.PathInvalid)
         {
             // NavMeshAgent�ɖړI�n���Z�b�g
+            StartCoroutine(VoicePlay());
             navMeshAgent.SetDestination(TargetObject.transform.position);
+
+
+           
+
         }
 
         if (peformtime)
@@ -112,5 +118,12 @@ public class Enemy2 : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = color;
             yield return null;
         }
+    }
+
+    IEnumerator VoicePlay()
+    {
+        Debug.Log("oto00");
+        EnemyVoice.Play();
+        yield return new WaitForSeconds(5f);
     }
 }
