@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
 
-    float ChaceDistance = 3f;
+   public  float ChaceDistance = 3f;
     public GameObject TargetObject;
 
     [SerializeField]
@@ -26,16 +26,21 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentWaypointIndex);
+      
         //Distance between player and enemy
         float distanceToPlayer = Vector3.Distance(transform.position, TargetObject.transform.position);
 
-       // float distanceToEnemy = Vector3.Distance(transform.position, LoiteringObject[rndnum].transform.position);
-
+        // float distanceToEnemy = Vector3.Distance(transform.position, LoiteringObject[rndnum].transform.position);
+        Text textScript = FindObjectOfType<Text>();
         if (ChaceDistance > distanceToPlayer)
         {
             Debug.Log(distanceToPlayer);
-           
+
+            
+            if (textScript != null)
+            {
+                textScript.changetext("なにかが近づいている");
+            }
             // NavMesh
             if (navMeshAgent.pathStatus != UnityEngine.AI.NavMeshPathStatus.PathInvalid)
             {
@@ -49,8 +54,8 @@ public class Enemy : MonoBehaviour
             // NavMesh
             if (navMeshAgent.pathStatus != UnityEngine.AI.NavMeshPathStatus.PathInvalid)
             {
-              
 
+                //textScript.ClearText();
                 //changedist
                 if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
                 {

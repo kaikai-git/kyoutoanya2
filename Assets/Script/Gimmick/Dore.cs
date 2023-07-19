@@ -8,9 +8,9 @@ public class Dore : MonoBehaviour
     [SerializeField]
     [Tooltip("自動ドアのアニメーター")]
     private Animator[] opendoreAnims;
-
+    [SerializeField] GameObject SousaPanel;
     AudioSource audioSource;
-
+   
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -22,6 +22,8 @@ public class Dore : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         audioSource.Play();
+       
+        SousaPanel.SetActive(false);
         // アニメーションパラメータをtrueにする。(ドアが開く)
         foreach (Animator opendoreAnim in opendoreAnims)
         {
@@ -30,4 +32,16 @@ public class Dore : MonoBehaviour
             Destroy(gameObject,3f);
         }
     }
+     
+    void Update()
+    {
+        if (FPSController.UIoff == false)
+        {
+            SousaPanel.SetActive(false);
+        }
+    }
+       
+
+
+  
 }

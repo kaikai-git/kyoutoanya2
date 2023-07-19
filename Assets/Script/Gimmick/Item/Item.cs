@@ -62,7 +62,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
             Ghost.SetActive(true);
             //gameObject.SetActive(false);
-
+            Debug.Log("Click");
             Destroy(gameObject);
 
             //????????

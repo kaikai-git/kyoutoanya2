@@ -7,7 +7,8 @@ public class FPSController : MonoBehaviour
     [SerializeField] GameObject PausePanel;
     [SerializeField] AudioSource footstepSound;
     float x, z;
-    float speed = 0.1f;
+    public float speed = 0.1f;
+    public static bool UIoff = true;
     bool IsPause;
     public GameObject cam;
     Quaternion cameraRot, characterRot;
@@ -128,6 +129,7 @@ public class FPSController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && IsPause == false)
         {
+           UIoff = false;
             IsPause = true;
             Time.timeScale = 0;
             PausePanel.SetActive(true);

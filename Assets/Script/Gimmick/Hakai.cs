@@ -10,7 +10,8 @@ public class Hakai : MonoBehaviour
 
     public GameObject[] DoreClose;
     public GameObject[] OhudaDore;
-
+    public GameObject wall;
+    public static bool flag1 = false;
     // ?h?A???????????]?p?x
     Quaternion[] rotations = new Quaternion[]
     {
@@ -29,6 +30,7 @@ public class Hakai : MonoBehaviour
     //?R???C?_?[???????????C?x???g????
     private void OnTriggerEnter(Collider other)
     {
+        wall.SetActive(true);
         foreach (GameObject dore in DoreClose)
         {
             dore.SetActive(false);
@@ -57,7 +59,7 @@ public class Hakai : MonoBehaviour
         {
             textScript.changetext("‰º‚©‚ç‚È‚É‚©•¨‰¹‚ª‚µ‚½");
         }
-
+        flag1 = true;
         //Collision?j??
         Destroy(gameObject, 3f);
 

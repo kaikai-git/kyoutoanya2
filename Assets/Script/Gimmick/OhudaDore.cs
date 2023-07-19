@@ -58,15 +58,14 @@ public class OhudaDore : MonoBehaviour
         }
         else
         {
-
-            //if (textScript != null)
-            //{
-            //    //??????????????????
-
-            //    //audioSource.Play();
-
-            //    textScript.changetext("??????????????????????");
-            //}
+            if (Hakai.flag1 == true)
+            {
+                Text textScript = FindObjectOfType<Text>();
+                if (textScript != null)
+                {
+                    textScript.changetext("ドアが開かない、邪悪な気配がする");
+                }
+            }
         }
         
     }

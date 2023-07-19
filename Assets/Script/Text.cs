@@ -21,7 +21,7 @@ public class Text : MonoBehaviour
         Invoke(nameof(ClearText), 3f);
     }
 
-    private void ClearText()
+    public void ClearText()
     {
         textMeshPro.text = "";
     }

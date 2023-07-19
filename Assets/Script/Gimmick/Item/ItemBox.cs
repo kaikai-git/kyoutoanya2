@@ -28,24 +28,48 @@ public class ItemBox : MonoBehaviour
     {
         if(type == Item.Type.Key)
         {
+            Text textScript = FindObjectOfType<Text>();
+            if (textScript != null)
+            {
+                textScript.changetext("どこかの錠前を外すことができるかもしれない");
+            }
             audioSource.Play();
             box0.SetActive(true);
             Debug.Log(type + "????");
         }
         if (type == Item.Type.Ohuda)
         {
+            Hakai.flag1 = false;
+            Debug.Log(Hakai.flag1);
+            Text textScript = FindObjectOfType<Text>();
+            if (textScript != null)
+            {
+                textScript.changetext("悪い気配を取り除いてくれそうだ");
+            }
             audioSource.Play();
             box1.SetActive(true);
             Debug.Log(type + "????");
+            
+            
         }
         if (type == Item.Type.Boueikun)
         {
+            Text textScript = FindObjectOfType<Text>();
+            if (textScript != null)
+            {
+                textScript.changetext("どこかで見たことのあるキャラクターのストラップだ");
+            }
             audioSource.Play();
             box2.SetActive(true);
             Debug.Log(type + "????");
         }
         if (type == Item.Type.Sho)
         {
+            Text textScript = FindObjectOfType<Text>();
+            if (textScript != null)
+            {
+                textScript.changetext("この城の住人だろうか？");
+            }
             audioSource.Play();
             box3.SetActive(true);
             Debug.Log(type + "????");

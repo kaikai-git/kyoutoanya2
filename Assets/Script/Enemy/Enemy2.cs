@@ -44,15 +44,15 @@ public class Enemy2 : MonoBehaviour
         if (peformtime)
         {
             Vector3 currentPosition = SpecialPerform.anchoredPosition3D;
-            Debug.Log("2");
+           
             if (currentPosition.x < -1)
             {
                 Vector3 newPosition = currentPosition + new Vector3(10f, 0f, 0f);
                 SpecialPerform.anchoredPosition3D = newPosition;
-                Debug.Log("d");
+               
                 if (SpecialPerform.anchoredPosition3D.x >= -2)
                 {
-                    Debug.Log("3");
+                   
                     peformanceCompleate();
                 }
             }
@@ -87,7 +87,7 @@ public class Enemy2 : MonoBehaviour
             color.a += fadeSpeed;
             color.a = Mathf.Clamp01(color.a); // アルファ値を0から1の範囲に制限する
             gameObject.GetComponent<SpriteRenderer>().color = color;
-            Debug.Log("hiy");
+           
         }
     }
 
@@ -96,7 +96,7 @@ public class Enemy2 : MonoBehaviour
         if (other.gameObject.tag == "CanSee")
         {
             StartCoroutine(FadeOut());
-            Debug.Log("Hanareta");
+           
         }
     }
 
@@ -122,7 +122,7 @@ public class Enemy2 : MonoBehaviour
 
     IEnumerator VoicePlay()
     {
-        Debug.Log("oto00");
+        
         EnemyVoice.Play();
         yield return new WaitForSeconds(5f);
     }
